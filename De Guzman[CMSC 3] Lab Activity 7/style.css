@@ -1,0 +1,227 @@
+/* Vibe code po tayu maem */
+
+/* ===== 1. COLORS (change the theme here) ===== */
+:root {
+  --space: #080b24;   /* page background */
+  --navy: #101a4a;
+  --violet: #3a2a7d;
+  --text: #e9edff;
+  --accent: #8fb4ff;  /* headings, links */
+  --pink: #ff9ad5;    /* pin */
+  --line: rgba(143, 180, 255, .45);  /* borders */
+}
+
+/* ===== 2. BASE ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }  /* nav links glide */
+
+body {
+  font-family: Georgia, serif;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(58, 42, 125, .75), transparent 55%),
+    radial-gradient(ellipse at 85% 55%, rgba(255, 154, 213, .12), transparent 50%),
+    radial-gradient(ellipse at 20% 95%, rgba(16, 26, 74, .9), transparent 60%),
+    var(--space);
+  background-attachment: fixed;
+}
+
+h2 { font-size: 1.5rem; margin-bottom: .5rem; color: var(--accent); }
+a { color: var(--accent); }
+section { position: relative; overflow: hidden; }  /* Top, Middle, Bottom, Feedback */
+::selection { background: #fff; color: #000; }      /* highlight when text is selected */
+
+/* ===== 3. SHARED PIECES ===== */
+
+/* all dark boxes use the same look */
+.info-main, .box, .date, .feedback-box {
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  background: rgba(16, 26, 74, .78);
+}
+
+/* twinkling stars (the tiny squares) */
+.star {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #fff;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, .7);
+  animation: twinkle 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes twinkle { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+
+/* picture frame (Middle + Bottom) */
+.pic {
+  overflow: hidden;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .5);
+}
+.pic img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* fill the frame without stretching */
+  object-position: center top;  /* which part of the photo shows */
+}
+
+/* ===== 4. NAV BAR ===== */
+.nav {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+  width: min(520px, 92%);
+  padding: 6px 10px;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  background: rgba(8, 11, 36, .85);
+  backdrop-filter: blur(6px);
+}
+.nav a { flex: 1; padding: 4px; text-align: center; text-decoration: none; color: var(--text); border-radius: 4px; }
+.nav a:hover { background: var(--violet); }
+
+/* ===== 5. TOP (planet, info box, tab buttons) ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 240px;  /* info box | buttons */
+  gap: 28px;
+  align-items: center;
+  min-height: 540px;
+  padding: 90px 5vw 40px 0;
+}
+.hero input { position: absolute; opacity: 0; pointer-events: none; }  /* hidden radios = the tabs */
+
+/* planet with a moon inside */
+.planet {
+  position: absolute;
+  left: -230px;  /* half of it goes off-screen */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 470px;
+  height: 470px;
+  border-radius: 50%;
+  border: 3px solid var(--line);
+  background: radial-gradient(circle at 65% 35%, #0e0a5e, var(--violet) 45%, var(--navy));
+  box-shadow: 0 0 80px rgba(143, 180, 255, .25);
+}
+.moon {
+  position: absolute;
+  left: 73%;
+  top: 20%;
+  transform: translateY(-50%);
+  width: 46%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 3px solid var(--line);
+  background: radial-gradient(circle at 35% 30%, #c9d7ff, #6f86d6 60%, #3a4c9c);
+}
+
+/* info box (centered text) */
+.info-main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 300px;
+  margin-left: clamp(110px, 24vw, 320px);
+  padding: 28px 32px;
+  text-align: center;
+}
+.panel { display: none; }  /* show only the selected tab's panel */
+#t1:checked ~ .info-main .p1,
+#t2:checked ~ .info-main .p2,
+#t3:checked ~ .info-main .p3,
+#t4:checked ~ .info-main .p4 { display: block; }
+.panel ul { list-style: none; }
+.panel li { margin: .3rem 0; }
+
+/* tab buttons */
+.menu { display: grid; gap: 16px; }
+.menu label {
+  padding: 14px 10px;
+  text-align: center;
+  letter-spacing: .12em;
+  cursor: pointer;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  background: rgba(8, 11, 36, .7);
+  transition: background .2s, color .2s;
+}
+.menu label:hover { background: var(--violet); }
+#t1:checked ~ .menu label[for="t1"],
+#t2:checked ~ .menu label[for="t2"],
+#t3:checked ~ .menu label[for="t3"],
+#t4:checked ~ .menu label[for="t4"] { background: var(--accent); color: var(--space); }  /* selected tab */
+
+/* ===== 6. MIDDLE (info boxes + overlapping pics) ===== */
+.middle { padding: 50px 5vw 20px; }
+.row { position: relative; width: min(900px, 100%); margin: 0 auto 110px; }
+.row:last-child { margin-bottom: 60px; }
+.row .box { width: 74%; padding: 32px; }
+.row .pic { position: absolute; width: 36%; height: 220px; }
+
+.r1 .box { padding-right: 100px; }
+.r1 .pic { top: 50%; right: 0; transform: translateY(-50%); }
+
+.r2 .box { margin-left: auto; padding-left: 100px; }
+.r2 .pic { top: 50%; left: 0; transform: translateY(-50%); }
+
+.r3 .box { padding-right: 100px; }  /* new: keeps text away from the pic */
+.r3 .pic { top: 50%; right: 0; transform: translateY(-50%); }
+
+/* ===== 7. BOTTOM (scrapbook pics + date box) ===== */
+.bottom { padding-top: 30px; }
+.slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-color: var(--accent) transparent; }
+.slide { position: relative; flex: 0 0 100%; height: 500px; scroll-snap-align: center; }
+
+.slide .pic { position: absolute; }
+.slide .a { left: 14%; top: 60px;  width: 230px; height: 290px; }
+.slide .b { left: 28%; top: 120px; width: 240px; height: 300px; transform: rotate(18deg); }
+.slide .c { left: 47%; top: 70px;  width: 210px; height: 260px; transform: rotate(-7deg); }
+.slide .d { left: 56%; top: 190px; width: 210px; height: 260px; transform: rotate(9deg); }
+
+.pin {  /* between pics a and b */
+  position: absolute;
+  left: calc(28% + 6px);
+  top: 106px;
+  z-index: 2;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--pink);
+  background: radial-gradient(circle, #fff, var(--pink));
+}
+.date { position: absolute; right: 8%; top: 170px; width: min(300px, 32%); padding: 18px 22px; }
+
+/* ===== 8. FEEDBACK (star rating + comment box) ===== */
+.feedback { padding: 60px 5vw 80px; }
+.feedback-box { width: min(520px, 100%); margin: 0 auto; padding: 32px; text-align: center; }
+
+/* stars: row-reverse lets the chosen star and the ones before it light up */
+.rating { display: flex; flex-direction: row-reverse; justify-content: center; margin: 12px 0 20px; }
+.rating input { position: absolute; opacity: 0; }
+.rating label { padding: 0 4px; font-size: 2.4rem; line-height: 1; cursor: pointer; color: rgba(255, 255, 255, .25); }
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label { color: #ffd166; }
+
+.feedback-box > label { display: block; margin-bottom: 6px; text-align: left; }
+.feedback-box textarea, .feedback-box button {
+  font: inherit;
+  color: var(--text);
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  background: rgba(8, 11, 36, .7);
+}
+.feedback-box textarea { width: 100%; padding: 12px; resize: vertical; }
+.feedback-box button { margin-top: 16px; padding: 12px 28px; letter-spacing: .1em; cursor: pointer; transition: background .2s, color .2s; }
+.feedback-box button:hover { background: #fff; color: #000; }

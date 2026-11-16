@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>De Guzman - Personal Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#top">Top</a>
+    <a href="#middle">Middle</a>
+    <a href="#bottom">Bottom</a>
+    <a href="#feedback">Feedback</a>
+  </nav>
+
+  <!-- ================= TOP ================= -->
+  <section id="top" class="hero">
+    <!-- hidden radios power the tabs (HTML + CSS only) -->
+    <input type="radio" name="tab" id="t1" checked>
+    <input type="radio" name="tab" id="t2">
+    <input type="radio" name="tab" id="t3">
+    <input type="radio" name="tab" id="t4">
+
+    <!-- stars (with the help of my twin) -->
+    <i class="star" style="top:14%;left:30%"></i>
+    <i class="star" style="top:80%;left:45%;animation-delay:1s"></i>
+    <i class="star" style="top:22%;left:92%;animation-delay:2s"></i>
+    <i class="star" style="top:90%;left:8%;animation-delay:.5s"></i>
+
+    <div class="planet"><div class="moon"></div></div> <!-- for design eneme  --> 
+
+    <!--Infos-->
+    <div class="info-main">
+      <article class="panel p1">
+        <h2>Self</h2>
+        <p><strong>Grant Adrian B. De Guzman</strong></p>
+        <p><i>BS Computer Science</i><br>Male, 18 Years Old<br>February 8, 2008</p>
+      </article>
+
+      <article class="panel p2">
+        <h2>Hobbies</h2>
+        <p>Scrapbooking is my way of expressing not just creativity, but also my emotions and memories. Dancing is my interest. What is love? As a human being, I love reading manhuas :P</p>
+      </article>
+
+      <article class="panel p3">
+        <h2>Funfact</h2>
+        <p>I'm amihan, because I am her and she is me and we are all one.<br>Avisala Eshma</p><br>
+        <p><small> And I'm from the City of The Golden Frienship!<br> Cagayan de Oro City</small></p>
+      </article>
+
+      <article class="panel p4">
+        <h2>Accounts</h2>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="menu">
+      <label for="t1">SELF</label>
+      <label for="t2">HOBBIES</label>
+      <label for="t3">FUNFACT</label>
+      <label for="t4">ACCOUNTS</label>
+    </div>
+  </section>
+
+  <!-- ================= MIDDLE ================= -->
+  <section id="middle" class="middle">
+    <i class="star" style="top:6%;left:18%"></i>
+    <i class="star" style="top:20%;left:93%;animation-delay:1s"></i>
+    <i class="star" style="top:38%;left:5%;animation-delay:2s"></i>
+    <i class="star" style="top:55%;left:88%;animation-delay:.7s"></i>
+    <i class="star" style="top:70%;left:12%;animation-delay:1.5s"></i>
+    <i class="star" style="top:92%;left:60%"></i>
+
+    <div class="row r1">
+      <div class="box">
+       <h2>Grant's Note</h2>
+<p>As a beginner in coding, it is hard to catch up with my peers because of their talent and skills. Still, I want to work hard and learn slowly but surely.</p>
+      </div>
+      <div class="pic"><img src="2.png" alt="baby meme"></div>
+    </div>
+
+    <div class="row r2">
+      <div class="pic"><img src="3.png" alt="meme"></div>
+      <div class="box">
+        <h2>How's UP Life so Far</h2>
+        <p>During my first month, I felt overwhelmed because I could feel the aura of the students around me. I still struggle to find myself here because they're so talented, but here I am, doing my best.</p>
+      </div>
+    </div>
+
+    <div class="row r3">
+      <div class="box">
+        <h2>Note to Self</h2>
+        <p>Arat mag study kay babagsak ka talaga!! HAHAHAHA <br> So far, I want to thank Maem Gracie, Kay Master kau sya mu tudlo and Masabtan nako sya. And sakong side, daghan pa gyud og need i master kay sige og gawas sa pikas dalunggan ang mga infos</p>
+      </div>
+      <div class="pic"><img src="1.png" alt="Graduation"></div>
+    </div>
+  </section>
+
+  <!-- ================= BOTTOM ================= -->
+  <section id="bottom" class="bottom">
+    <i class="star" style="top:10%;left:8%"></i>
+    <i class="star" style="top:16%;left:70%;animation-delay:1s"></i>
+    <i class="star" style="top:85%;left:90%;animation-delay:2s"></i>
+
+    <div class="slides">
+
+      <div class="slide">
+        <div class="pic a"><img src="4.png" alt="meme1"></div>
+        <div class="pic b"><img src="5.png" alt="meme2"></div>
+        <div class="pic c"><img src="6.png" alt="meme3"></div>
+        <div class="pic d"><img src="7.png" alt="meme4"></div>
+        <span class="pin"></span>
+        <div class="date"><b>Category is:</b> Best Memory <br><b>with:</b> best friends</div>
+      </div>
+    </div>
+  </section>
+<!-- ================= FEEDBACK ================= -->
+<section id="feedback" class="feedback">
+  <i class="star" style="top:15%;left:10%"></i>
+  <i class="star" style="top:75%;left:88%;animation-delay:1s"></i>
+
+  <form class="feedback-box" action="mailto:youremail@example.com" method="post" enctype="text/plain">
+    <h2>Rate My Design</h2>
+    <p>How did you like this page?</p>
+
+    <!-- star rating (5 is first in the code, but shows last) -->
+    <div class="rating">
+      <input type="radio" name="rating" id="r5" value="5"><label for="r5" title="5 stars">★</label>
+      <input type="radio" name="rating" id="r4" value="4"><label for="r4" title="4 stars">★</label>
+      <input type="radio" name="rating" id="r3" value="3"><label for="r3" title="3 stars">★</label>
+      <input type="radio" name="rating" id="r2" value="2"><label for="r2" title="2 stars">★</label>
+      <input type="radio" name="rating" id="r1" value="1"><label for="r1" title="1 star">★</label>
+    </div>
+
+    <label for="comment">Your feedback</label>
+    <textarea id="comment" name="feedback" rows="5" placeholder="What did you like? What can I improve?"></textarea>
+
+    <button type="submit">Send feedback</button>
+  </form>
+</section>
+
+</body>
+</html>
